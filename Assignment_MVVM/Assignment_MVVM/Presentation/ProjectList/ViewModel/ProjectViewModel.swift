@@ -30,9 +30,9 @@ struct ProjectViewModel {
     var forkUrl: String?
     var owner: Owner?
     var imageData: Data?
-    let publisher = NotificationCenter.Publisher(center: .default, name: .updateData, object: nil).map { (notification)-> [ProjectViewModel]? in
-        return notification.object as? [ProjectViewModel]
-    }
+//    let publisher = NotificationCenter.Publisher(center: .default, name: .updateData, object: nil).map { (notification)-> [ProjectViewModel]? in
+//        return notification.object as? [ProjectViewModel]
+//    }
     init() {}
     
     init(data: ProjectModel?) {
@@ -57,8 +57,8 @@ struct ProjectViewModel {
                 guard let responseData = data else { return }
                 let projectData = try? JSONDecoder().decode([ProjectModel].self, from: responseData)
                 let viewDataModel = projectData?.map({ProjectViewModel(data: $0)})
-                NotificationCenter.default.post(name: .updateData, object: viewDataModel)
-                //delegate?.getDataResponse(successResponse: viewDataModel, error: nil)
+                //NotificationCenter.default.post(name: .updateData, object: viewDataModel)
+                delegate?.getDataResponse(successResponse: viewDataModel, error: nil)
             } else {
                 delegate?.getDataResponse(successResponse: nil, error: error)
             }

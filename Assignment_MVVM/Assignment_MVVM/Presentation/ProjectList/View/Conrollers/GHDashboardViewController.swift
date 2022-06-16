@@ -8,9 +8,9 @@
 import UIKit
 import Combine
 
-protocol UpdateUserDataDelegate: AnyObject {
-    func updateUserData(userData: ProjectViewModel?)
-}
+//protocol UpdateUserDataDelegate: AnyObject {
+//    func updateUserData(userData: ProjectViewModel?)
+//}
 
 class GHDashboardViewController: UIViewController {
 
@@ -19,7 +19,7 @@ class GHDashboardViewController: UIViewController {
     
     lazy var projectData = ProjectViewModel()
     var filteredProjectData: [ProjectViewModel]?
-    weak var userDelegate: UpdateUserDataDelegate?
+    //weak var userDelegate: UpdateUserDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class GHDashboardViewController: UIViewController {
         registerCell()
         projectData.delegate = self
         projectData.getTrndingProjectData()
-        projectData.publisher.assign(to: &filteredProjectData)
+        //projectData.publisher.assign(to: &filteredProjectData)
     }
     
     func registerCell() {
